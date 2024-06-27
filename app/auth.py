@@ -11,4 +11,4 @@ class JWTAuthMiddleware:
         try:
             req.context['user'] = decode_token(token)
         except falcon.HTTPUnauthorized as ex:
-            raise falcon.HTTPUnauthorized(description=str(ex))
+            return
