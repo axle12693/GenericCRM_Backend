@@ -1,13 +1,13 @@
-# Falcon Project
+# GenericCRM - Backend
 
-This is a basic Falcon project template.
+I've been disappointed with the current state of paid, freemium, and open-source CRMs. The goal of this project is to create a CRM backend that is both generic and powerful enough that anyone can plug their own front end onto it via REST API.
 
 ## Setup
 
 1. Create a virtual environment:
    ```sh
    python -m venv venv
-   source venv/bin/activate  # On Windows use `venv\Scripts\activate`
+   source venv/bin/activate
    ```
 
 2. Install dependencies:
@@ -17,7 +17,7 @@ This is a basic Falcon project template.
 
 3. Run the application:
    ```sh
-   python app/main.py
+   python -m app
    ```
 
 4. Run tests:
