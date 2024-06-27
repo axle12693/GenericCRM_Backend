@@ -1,6 +1,7 @@
 import falcon
 from .models import create_user, authenticate_user
 
+
 class UserResource:
     def on_post(self, req, resp):
         data = req.media
@@ -17,6 +18,7 @@ class UserResource:
         except ValueError as ex:
             raise falcon.HTTPConflict(description=str(ex))
 
+
 class LoginResource:
     def on_post(self, req, resp):
         data = req.media
@@ -31,6 +33,7 @@ class LoginResource:
             resp.media = {'token': token}
         except ValueError as ex:
             raise falcon.HTTPUnauthorized(description=str(ex))
+
 
 class ProtectedResource:
     def on_get(self, req, resp):

@@ -3,6 +3,7 @@ import falcon
 from .resources import UserResource, LoginResource, ProtectedResource
 from .auth import JWTAuthMiddleware
 
+
 def create_app():
     app = falcon.App(middleware=[JWTAuthMiddleware()])
     user_resource = UserResource()

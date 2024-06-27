@@ -1,6 +1,7 @@
 import falcon
 from .models import decode_token
 
+
 class JWTAuthMiddleware:
     def process_request(self, req, resp):
         token = req.get_header('Authorization')

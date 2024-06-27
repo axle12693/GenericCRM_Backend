@@ -10,8 +10,10 @@ SECRET_KEY = 'your_secret_key'
 def hash_password(password):
     return bcrypt.hashpw(password.encode('utf-8'), bcrypt.gensalt()).decode('utf-8')
 
+
 def verify_password(password, hashed):
     return bcrypt.checkpw(password.encode('utf-8'), hashed.encode('utf-8'))
+
 
 def create_user(username, password):
     if username in users_db:
@@ -21,11 +23,13 @@ def create_user(username, password):
         'password': hash_password(password)
     }
 
+
 def authenticate_user(username, password):
     user = users_db.get(username)
     if not user or not verify_password(password, user['password']):
         raise ValueError('Invalid username or password')
     return generate_token(username)
+
 
 def generate_token(username):
     payload = {
@@ -34,6 +38,7 @@ def generate_token(username):
         'exp': datetime.datetime.utcnow() + datetime.timedelta(hours=1)
     }
     return jwt.encode(payload, SECRET_KEY, algorithm='HS256')
+
 
 def decode_token(token):
     try:
