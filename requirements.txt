@@ -1,2 +1,4 @@
 falcon
 pytest
+bcrypt
+PyJWT
