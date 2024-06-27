@@ -1,11 +1,17 @@
 import bcrypt
 import jwt
 import datetime
+import dotenv
+import os
+import falcon
 
 # Mock database
 users_db = {}
 
-SECRET_KEY = 'your_secret_key'
+dotenv.load_dotenv()
+
+SECRET_KEY = os.environ.get("SECRET_KEY")
+
 
 def hash_password(password):
     return bcrypt.hashpw(password.encode('utf-8'), bcrypt.gensalt()).decode('utf-8')
