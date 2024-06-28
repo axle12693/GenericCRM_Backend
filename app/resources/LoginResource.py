@@ -1,6 +1,6 @@
 from .Resource import Resource
 import falcon
-from ..models import authenticate_user
+from ..models import User
 
 class LoginResource(Resource):
     def on_post(self, req, resp):
@@ -12,7 +12,7 @@ class LoginResource(Resource):
             raise falcon.HTTPBadRequest(description='Username and password are required')
 
         try:
-            token = authenticate_user(username, password)
+            token = User(self.config).authenticate_user(username, password)
             resp.media = {'token': token}
         except ValueError as ex:
             raise falcon.HTTPUnauthorized(description=str(ex))

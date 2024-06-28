@@ -6,8 +6,8 @@ from .config import Config
 
 
 def create_app():
-    app = falcon.App(middleware=[JWTAuthMiddleware()])
     config = Config()
+    app = falcon.App(middleware=[JWTAuthMiddleware(config)])
     user_resource = UserResource(config)
     login_resource = LoginResource(config)
     protected_resource = ProtectedResource(config)

@@ -1,6 +1,6 @@
 from .Resource import Resource
 import falcon
-from ..models import create_user
+from ..models import User
 
 
 class UserResource(Resource):
@@ -13,7 +13,7 @@ class UserResource(Resource):
             raise falcon.HTTPBadRequest(description='Username and password are required')
 
         try:
-            create_user(username, password)
+            User(self.config).create_user(username, password)
             resp.status = falcon.HTTP_201
             resp.media = {'message': 'User created successfully'}
         except ValueError as ex:
